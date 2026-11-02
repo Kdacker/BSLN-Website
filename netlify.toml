@@ -1,0 +1,3 @@
+[build]
+  publish = "."
+  command = "if [ -f update_csp_hashes.py ]; then python3 update_csp_hashes.py index.html; else echo 'No hash script on this branch, skipping'; fi"
