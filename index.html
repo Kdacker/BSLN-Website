@@ -12,10 +12,10 @@
 <meta name="apple-mobile-web-app-title" content="Baseline">
 <meta name="format-detection" content="telephone=no">
 <!-- SECURITY (V25): this policy only runs scripts whose sha256 hash is listed below. After ANY edit to the code inside a script tag, run: python3 update_csp_hashes.py <this file>. If you skip it, the page stays on the loading screen. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-DwOqpHVkenGJJ5HTtlyfh8OGnPENw24vxkG1WcucHt4=' 'sha256-vSb4BSpKayMqOYL2hjjTu+J+oyRTp4Sofo48GQ0xHI8=' 'sha256-gspLnmXSiIOGcMuPoxFSNwJCwEwwRNQtzJPhDdvnV3k=' 'sha256-63m0AxzPaBfKW0wUl+7Hl1ct5379G7+ugykdz3VvuQk=' 'sha256-s9wAohjAQma6UXexHWzDL0rANv6STA7NlQvyJYvgbPw=' 'sha256-aeVGeNAELC1Sw+Rn0/HWSdsw+wzZ8QeCkBM9c4/WrFE='; script-src-attr 'none'; style-src 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-DwOqpHVkenGJJ5HTtlyfh8OGnPENw24vxkG1WcucHt4=' 'sha256-Jrc4U/cN+zoV4F/HqrT2YllQZPCib9xIiP+7r4Yi6Pw=' 'sha256-gspLnmXSiIOGcMuPoxFSNwJCwEwwRNQtzJPhDdvnV3k=' 'sha256-63m0AxzPaBfKW0wUl+7Hl1ct5379G7+ugykdz3VvuQk=' 'sha256-s9wAohjAQma6UXexHWzDL0rANv6STA7NlQvyJYvgbPw=' 'sha256-Kii9M2rqk6k8eYSzYiYBUtZpZi/6QTS6CRcf2iYJkhQ=' 'sha256-57CiLr0nlEyrwZAaZQR0IFA1vo6t5QFyKCuCedfipuA=' https://*.clerk.accounts.dev https://clerk.bsln-health.com https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https://img.clerk.com; connect-src https://*.clerk.accounts.dev https://clerk.bsln-health.com; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:">
 <meta name="referrer" content="no-referrer">
 <script>(function(){var t=null;try{t=localStorage.getItem("baseline:theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
-<script>window.addEventListener("error",function(e){var el=document.getElementById("bootErr");if(el){el.textContent="Error: "+e.message;var m=document.getElementById("bootMsg");if(m)m.style.opacity="1"}})</script>
+<script>window.addEventListener("error",function(e){if(String(e.message||"").indexOf("BSLN_LOCKED")>=0){e.preventDefault();return}var el=document.getElementById("bootErr");if(el){el.textContent="Error: "+e.message;var m=document.getElementById("bootMsg");if(m)m.style.opacity="1"}})</script>
 <title>Baseline: a biological age estimate and a wellness plan</title>
 <meta name="description" content="Find your biological age free in about 2 minutes, or add 9 blood markers for a lab-based number. Then follow a 12-week plan, one habit at a time.">
 <link rel="canonical" href="https://bsln-health.com/">
@@ -44,7 +44,7 @@
    "@id": "https://bsln-health.com/#org",
    "name": "Baseline",
    "legalName": "Baseline Health",
-   "email": "kdacker@email.sc.edu",
+   "email": "bslnhealth@gmail.com",
    "url": "https://bsln-health.com/",
    "logo": "https://bsln-health.com/apple-touch-icon.png",
    "sameAs": [
@@ -114,7 +114,7 @@
      "name": "Is my data stored?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Nothing leaves your browser. Your answers are saved in this browser on this device only, so you can pick up where you left off. Saved data is deleted automatically after 12 months without a visit, and you can delete it any time from the Privacy policy. On a shared computer, delete it when you finish."
+      "text": "Your answers never leave your browser. You sign in with an account, but your answers are saved in this browser on this device only, so you can pick up where you left off. Saved data is deleted automatically after 12 months without a visit, and you can delete it any time from the Privacy policy. On a shared computer, delete it when you finish."
      }
     }
    ]
@@ -3224,13 +3224,7 @@ button.qt:hover,button.qt-g:hover .qt{transform:translateY(-3px)}
 .qfocus .qf-on .numwrap{max-width:380px;min-height:72px}
 .qfocus .qf-on>small,.qfocus .qf-on .hint{font-size:1.0625rem;margin-top:12px;display:block}
 .qfocus .qf-on .seg .opt{position:relative;min-height:64px;font-size:1.0625rem}
-.qfocus .qf-on .seg-pills .opt,.qfocus .qf-on .seg-rows .opt,.qfocus .qf-on .seg-list .opt{padding-right:46px}
-.qk{position:absolute;right:10px;top:50%;transform:translateY(-50%);font:600 .74rem/1 var(--sans);min-width:22px;height:22px;display:grid;place-items:center;border-radius:6px;background:var(--paper);color:var(--muted);box-shadow:inset 0 0 0 1px var(--line);pointer-events:none}
-.seg-cards .qk{top:12px;transform:none}
-.opt.on .qk{background:var(--ink);color:var(--paper);box-shadow:none}
 .chips .chip,.tiles .tile{position:relative}
-.chips .chip .qk{right:8px}
-.tiles .tile .qk{top:12px;right:40px;transform:none}
 .qfocus .qf-on .rng2{height:44px}
 .qin{animation:v41in .5s cubic-bezier(.2,.7,.2,1) both}
 .qin-b{animation:v41inb .45s cubic-bezier(.2,.7,.2,1) both}
@@ -3238,7 +3232,20 @@ button.qt:hover,button.qt-g:hover .qt{transform:translateY(-3px)}
 @keyframes v41inb{from{opacity:0;transform:translateY(-16px)}}
 .q41-mode{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;align-items:center;margin-top:18px;font-size:.9375rem;color:var(--muted)}
 .q41-hint:empty{display:none}
-@media (hover:none){.q41-hint{display:none}.qk{display:none}}
+@media (hover:none){.q41-hint{display:none}}
+/* V52: questionnaire answers sit in the middle of their bubbles */
+.intake2 .seg .opt{justify-content:center;align-items:center;text-align:center;padding-left:28px;padding-right:28px}
+.intake2 .seg-cards .opt,.intake2 .seg-money .opt,.intake2 .seg-bars .opt{padding-left:12px;padding-right:12px}
+.intake2 .seg-days .opt{padding-left:0;padding-right:0}
+.intake2 .seg .opt>b,.intake2 .seg .opt>span{text-align:center}
+.intake2 .chip span{justify-content:center;text-align:center}
+.intake2 .tl{flex-direction:column;justify-content:center;text-align:center;gap:8px;padding:14px 34px}
+.intake2 .tx{align-items:center}
+.intake2 .ck{top:12px;margin-top:0}
+/* V52: slider questions show their number large, on its own line under the question */
+.qfocus .qf-on>label.lbl b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(3.25rem,7vw,4.5rem);line-height:1;letter-spacing:-.02em;margin:20px 0 0;font-variant-numeric:tabular-nums}
+.qfocus .qf-on>label.lbl b:empty{display:none}
+.qfocus .qf-on>label.lbl b+em{margin-top:6px}
 
 /* the program as a game */
 .gm{background:var(--deep);color:var(--deep-ink);border-radius:20px;padding:22px 24px 18px;margin:0 0 18px;display:grid;gap:18px}
@@ -3792,6 +3799,200 @@ dialog.rd50[open]{display:flex}
 .pc51-gpc{background:var(--sea-soft);border-radius:12px;padding:10px 14px}
 .pc51-l{display:grid;gap:10px;margin:0 0 18px}
 .pc51 small{color:var(--muted)}
+
+/* V52: 12-week trail. The line fills up to where you are this week; the current week is a ring on the line */
+.gm-trail{padding:8px 0 0}
+.gm-stops{--c:calc(100% / 24);--y:11px;justify-content:stretch}
+.gm-stop{flex:1 1 0;width:auto;min-width:0}
+/* a cleared week shares the .clr class name with the routine editor rows; undo those styles here */
+.gm-stops .gm-stop.clr{flex-direction:column;flex-wrap:nowrap;align-items:center;gap:6px;padding:0;border:0;border-radius:0;background:none}
+.gm-stops::before,.gm-stops::after{content:"";position:absolute;left:var(--c);top:calc(var(--y) - 2px);height:4px;border-radius:4px;pointer-events:none}
+.gm-stops::before{right:var(--c);background:rgba(255,255,255,.14)}
+.gm-stops::after{width:calc((100% - 2 * var(--c)) * var(--p,0));background:linear-gradient(90deg,var(--mint),color-mix(in srgb,var(--mint) 55%,var(--blush)));transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.gm-stop i{width:22px;height:22px;flex:none;z-index:1;background:var(--deep);box-shadow:inset 0 0 0 2px rgba(255,255,255,.22);transition:background-color .4s,box-shadow .4s,transform .3s}
+.gm-stop.past i{box-shadow:inset 0 0 0 2px var(--mint)}
+.gm-stop.clr i{background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312252C' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat;box-shadow:none}
+.gm-stop.cur i{background:var(--deep);box-shadow:inset 0 0 0 3px var(--blush),0 0 0 5px color-mix(in srgb,var(--blush) 28%,transparent);transform:scale(1.12)}
+.gm-stop.cur.clr i{background-color:var(--mint)}
+.gm-stop.cur i::after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--blush)}
+.gm-stop.cur.clr i::after{display:none}
+.gm-stop.past span,.gm-stop.clr span{color:var(--deep-ink)}
+.gm-you{display:none}
+@media (max-width:760px){.gm-trail{padding:8px 0 0}.gm-stops{--y:9px}.gm-stop i{width:18px;height:18px}.gm-stop.cur i::after{inset:5px}.gm-stop.clr i{background-size:10px}}
+@media (prefers-reduced-motion:reduce){.gm-stops::after{transition:none}}
+/* V52: breathing room between the results header and the step card */
+#pane>.pguide.pg2{margin-top:30px}
+/* V52: step card. Glow in the corner, a visible icon in the step badge, light step buttons with the current one in the accent color */
+.pguide.pg2 .pg-hero{isolation:isolate;border-radius:26px;padding:24px 26px 22px;background:radial-gradient(ellipse 260px 220px at 100% 0%,color-mix(in srgb,var(--mint) 32%,transparent),transparent 75%),var(--deep)}
+.pguide.pg2 .pg-badge{padding:6px 18px 6px 6px}
+.pguide.pg2 .pg-badge .pg-ico{background:var(--deep)!important;color:var(--mint)!important;width:34px;height:34px}
+.pguide.pg2 .pg-up{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.14)}
+.pguide.pg2 .pg-track{gap:10px;margin-top:14px}
+.pguide.pg2 .pg-track button{min-height:62px;border-radius:16px;border:0;background:var(--deep-ink)!important;color:var(--deep)!important;font:700 1rem/1.2 var(--sans);box-shadow:none!important;transition:background .2s,box-shadow .2s,transform .2s}
+.pguide.pg2 .pg-track li.past button{background:var(--deep-ink)!important;color:var(--deep)!important}
+.pguide.pg2 .pg-track li.on button{background:var(--mint)!important;color:var(--deep)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--mint) 40%,var(--deep))!important}
+.pguide.pg2 .pg-track button:hover{background:color-mix(in srgb,var(--mint) 35%,var(--deep-ink))!important;color:var(--deep)!important;transform:translateY(-1px)!important}
+.pguide.pg2 .pg-track li.on button:hover{background:var(--mint)!important}
+@media (max-width:760px){.pguide.pg2 .pg-hero{border-radius:22px;padding:20px 16px 18px}.pguide.pg2 .pg-track button{min-height:50px;font-size:.875rem;border-radius:14px}}
+/* V52: text and boxes run the full width of their column instead of stopping short with empty space to the right */
+#app :is(p,h2,h3,.note,.rtw,.stw,.rh-dob,.rh-stats,.hm-sub,.hm-mid,.hm-tip,.prof,.exm-s,.srcnote,.dc-n,.dc-lev,.pg-txt,.pg-keep,.pg-links,.pg-lockn,.wl-safe,.pn-msg){max-width:none!important}
+#app .rh-stats{width:100%}
+.nts{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+/* V52: blood work section. Large two-line heading, tinted tip, and a frosted precision card with ticked tracks and glowing bands */
+.hm-labs .hm-split{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:clamp(48px,5.5vw,140px);align-items:start}
+.hm-labs h2{font-size:clamp(2.6rem,3.9vw,4.25rem);line-height:1.08;letter-spacing:-.025em;margin:0 0 30px}
+.hm-labs .hm-split>div>p:not(.hm-tip){font-size:1.1875rem;line-height:1.75}
+.hm-labs .hm-tip{margin-top:26px;padding:20px 22px;border-radius:20px;border:0;background:color-mix(in srgb,var(--mint) 22%,var(--paper));color:var(--ink);font-size:1.0625rem;line-height:1.75}
+.hm-labs .pcx{border-radius:34px;padding:34px 32px 28px;isolation:isolate;border:1px solid rgba(255,255,255,.12);background:radial-gradient(ellipse 380px 300px at 100% 0%,color-mix(in srgb,var(--mint) 22%,transparent),transparent 75%),radial-gradient(ellipse 300px 240px at 0% 100%,color-mix(in srgb,var(--blush) 12%,transparent),transparent 75%),linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02)),var(--deep)!important;box-shadow:0 40px 80px -36px rgba(12,26,40,.55),inset 0 1px 0 rgba(255,255,255,.1)}
+.hm-labs .pcx-h{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:34px}
+.hm-labs .pcx-eb{text-transform:uppercase;letter-spacing:.14em;font-size:.8125rem;color:var(--deep-ink);opacity:.8}
+.hm-labs .pcx-row{margin-bottom:26px}
+.hm-labs .pcx-l{margin-bottom:12px}
+.hm-labs .pcx-l b{font-size:1.0625rem;white-space:nowrap}
+.hm-labs .pcx-l em{font-size:1.5rem;letter-spacing:-.02em;white-space:nowrap}
+.hm-labs .pcx-trk{height:44px;border-radius:12px;overflow:visible;background:repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 1px,transparent 1px 15px),rgba(255,255,255,.04)!important}
+.hm-labs .pcx-band{top:0;bottom:0;border-radius:6px;opacity:1}
+.hm-labs .hab .pcx-band{background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--blush) 55%,transparent) 22%,var(--blush) 50%,color-mix(in srgb,var(--blush) 55%,transparent) 78%,transparent)!important;filter:drop-shadow(0 0 14px color-mix(in srgb,var(--blush) 45%,transparent))}
+.hm-labs .lab .pcx-band{background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--mint) 70%,transparent) 20%,var(--mint) 50%,color-mix(in srgb,var(--mint) 70%,transparent) 80%,transparent)!important;filter:drop-shadow(0 0 14px color-mix(in srgb,var(--mint) 50%,transparent))}
+.hm-labs .pcx-mid{top:-6px;bottom:-6px;opacity:1}
+.hm-labs .pcx-dot{width:14px;height:14px;margin:-7px 0 0 -7px;box-shadow:0 0 0 4px color-mix(in srgb,var(--deep-ink) 22%,transparent),0 0 16px rgba(255,255,255,.6)}
+.hm-labs .pcx-ax{margin:2px 0 30px;font-size:.875rem}
+.hm-labs .pcx-gain{padding:18px 18px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.18);margin-bottom:22px}
+.hm-labs .pcx-gain b{font-size:1.1875rem}
+.hm-labs .pcx-chips{gap:8px}
+.hm-labs .pcx-chips span{padding:6px 12px;font-size:.875rem;border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.03)}
+@media (max-width:1000px){.hm-labs .hm-split{grid-template-columns:1fr;row-gap:40px}}
+/* V52: homepage questions. Heading on top, then a full-width list divided by thin lines, with the link underneath */
+.hm-sec:has(.faq)>.wrap{display:block!important}
+.hm-sec:has(.faq)>.wrap>h2{font-size:clamp(2.6rem,4.4vw,4rem);line-height:1.05;letter-spacing:-.02em;margin:0}
+.hm-sec:has(.faq)>.wrap>.faq{max-width:none!important;width:100%;margin-top:34px}
+.hm-sec .faq details{background:none!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;margin:0!important;padding:0!important}
+.hm-sec .faq details summary{padding:30px 0;font-size:clamp(1.375rem,2vw,1.75rem);letter-spacing:-.01em}
+.hm-sec .faq details p{padding:0 72px 28px 0;font-size:1.0625rem;line-height:1.7}
+.hm-sec:has(.faq)>.wrap>.hm-mid{margin-top:40px;text-align:left}
+@media (max-width:640px){.hm-sec .faq details summary{padding:22px 0}.hm-sec .faq details p{padding-right:0}}
+/* V52: the Pro plan card and the closing call to action use the same colors as the rest of the page:
+   the theme's accent (not a fixed teal), the frosted dark card style, and the same primary button as the hero */
+.plan.feat.cream,.hm-final{--mint:inherit;--ca:inherit;--deep-ink:inherit;--deep-muted:inherit;--deep-line:inherit}
+.plan.feat.cream .pwhy,.plan.feat.cream .pdelta,.plan.feat.cream .ptrial,.plan.feat.cream small{color:var(--deep-muted)!important}
+.plan.feat.cream .pdelta{color:var(--mint)!important}
+.plan.feat.cream li b,.plan.feat.cream h3,.plan.feat.cream .pn{color:var(--deep-ink)}
+.plan.feat,.hm-final{isolation:isolate;border:1px solid rgba(255,255,255,.12)!important;background:radial-gradient(ellipse 380px 300px at 100% 0%,color-mix(in srgb,var(--mint) 24%,transparent),transparent 75%),radial-gradient(ellipse 320px 260px at 0% 100%,color-mix(in srgb,var(--blush) 12%,transparent),transparent 75%),linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02)),var(--deep)!important;color:var(--deep-ink);box-shadow:0 40px 80px -36px rgba(12,26,40,.55),inset 0 1px 0 rgba(255,255,255,.1)!important}
+.plan.feat{border-radius:28px}
+.hm-final{border-radius:34px}
+.plan.feat .btn.mint,.hm-final .btn.sea{background:var(--sea)!important;color:var(--on-sea)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.plan.feat .btn.mint:hover,.hm-final .btn.sea:hover{filter:brightness(1.12)}
+/* V52: page banners (What you get, How it works, Science, Pricing, FAQ, Privacy, Terms). Grid backdrop, soft glows,
+   uppercase label and a light gradient on the italic half of the heading, matching the results header */
+.hero2.phero{background:radial-gradient(ellipse 38% 110% at 92% 45%,color-mix(in srgb,var(--mint) 55%,transparent),transparent 72%),radial-gradient(ellipse 22% 70% at 0% 100%,color-mix(in srgb,var(--blush) 34%,transparent),transparent 72%),linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/70px 70px,linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0/70px 70px,var(--deep)!important;padding:72px 0 88px}
+.hero2.phero .eyebrow{text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:.8125rem;padding:.6em 1.15em;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--deep-ink)}
+.hero2.phero h1{font-size:clamp(2.8rem,5.2vw,4.75rem);line-height:1.05;letter-spacing:-.025em;margin-top:24px}
+.hero2.phero h1 .grad{background:linear-gradient(90deg,color-mix(in srgb,var(--mint) 65%,#fff) 0%,var(--mint) 45%,color-mix(in srgb,var(--blush) 75%,#fff) 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important;animation:none!important;padding:0 .1em .2em .14em;margin:0 -.1em -.2em -.14em}
+.hero2.phero .lead{font-size:1.3125rem;line-height:1.7;margin-top:28px;color:var(--deep-muted)}
+.hero2.phero .lead b{color:var(--deep-ink)}
+@media (max-width:640px){.hero2.phero{padding:44px 0 52px;background-size:auto,auto,48px 48px,48px 48px,auto!important}.hero2.phero h1{font-size:clamp(2.3rem,10vw,3rem)}.hero2.phero .lead{font-size:1.125rem}}
+.backres.in-hero{padding:0;margin:0 0 30px}
+.backres.in-hero .btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);color:var(--deep-ink);padding:.6em 1.2em .6em 1em;font-size:.9375rem;min-height:44px;box-shadow:none}
+.backres.in-hero .btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3);color:var(--deep-ink)}
+.backres.in-hero .btn svg{width:16px;height:16px;stroke:var(--mint)}
+.backres.in-hero .btn:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+@media (max-width:640px){.backres.in-hero{margin-bottom:22px}}
+.acct52{display:inline-flex;align-items:center;min-height:36px;margin-right:4px}
+.acct52 .acct52-in{font-weight:600;padding:8px 6px}
+.auth52{border:0;border-radius:24px;padding:28px 28px 22px;max-width:420px;width:calc(100% - 32px);background:var(--paper);color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.4)}
+.auth52::backdrop{background:rgba(10,20,30,.45)}
+.auth52 h2{font-size:1.75rem;margin:0 0 10px}
+.auth52 p{color:var(--muted);margin:0 0 20px}
+.auth52-a{display:flex;justify-content:flex-end}
+/* the default theme's accent button is near-black, which disappears on the dark card, so use the light version there */
+:root:not([data-sex]):not([data-theme="dark"]) .plan.feat .btn.mint,:root:not([data-sex]):not([data-theme="dark"]) .hm-final .btn.sea{background:var(--deep-ink)!important;color:var(--deep)!important}
+@media (max-width:640px){.hm-labs .pcx{border-radius:26px;padding:26px 20px 22px}.hm-labs .pcx-l{flex-wrap:wrap}.hm-labs .pcx-l b,.hm-labs .pcx-l em{white-space:normal}.hm-labs .pcx-l em{font-size:1.375rem}}
+@media (max-width:760px){#pane>.pguide.pg2{margin-top:22px}}
+/* =====================================================================
+   V52: results header restyle. Grid backdrop with soft glows, a large
+   gradient number, uppercase labels, a frosted age card and glassy
+   stat cards. Colors come from the theme tokens, so it follows the
+   person's color theme.
+   ===================================================================== */
+.rhero{background:radial-gradient(ellipse 60% 75% at 92% 8%,color-mix(in srgb,var(--mint) 30%,transparent),transparent 70%),radial-gradient(ellipse 45% 55% at 0% 100%,color-mix(in srgb,var(--blush) 22%,transparent),transparent 70%),var(--deep)}
+.rhero .grid-bg{opacity:1;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:70px 70px;-webkit-mask-image:radial-gradient(ellipse 85% 90% at 45% 35%,#000 30%,transparent 85%);mask-image:radial-gradient(ellipse 85% 90% at 45% 35%,#000 30%,transparent 85%)}
+.rhero .orb.o1{opacity:.32}
+.rhero .orb.o2{opacity:.22}
+/* labels */
+.rhero .eyebrow,.rhero .as-k,.rhero .rstat small{text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.rhero .eyebrow{font-size:.8125rem;padding:.6em 1.15em;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--deep-ink)}
+.rhero .as-k{font-size:.8125rem;color:var(--deep-ink);opacity:.85}
+.rhero .depth{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+.rhero .tools .btn.light{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:var(--deep-ink);font-weight:600}
+.rhero .tools .btn.light:hover{background:rgba(255,255,255,.1)}
+/* the big number */
+.rhero .rh-main{align-items:center}
+.rhero .rh-k{font-size:1.1875rem;margin-bottom:10px}
+.rhero .rbig{font-size:clamp(5.4rem,10vw,9.5rem)!important;font-weight:300;line-height:.92;letter-spacing:-.045em}
+.rhero .rbig span,.rhero .as-nv{background:linear-gradient(180deg,var(--deep-ink) 20%,color-mix(in srgb,var(--mint) 75%,var(--deep-ink)) 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent}
+.rhero .gp{margin-top:26px;padding:.8em 1.6em .8em 1.2em;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);font-size:1.3125rem}
+.rhero .gp.gp-old b,.rhero .gp.gp-young b{color:var(--mint)}
+.rhero .gp.gp-old svg,.rhero .gp.gp-young svg{stroke:var(--mint)}
+.rhero .rh-rng{margin-top:22px}
+.rhero .rh-rng,.rhero .rh-rng b{color:var(--deep-ink);font-weight:600}
+/* the age card */
+.rhero .agecard{position:relative;isolation:isolate;overflow:hidden;border-radius:34px;border:1px solid rgba(255,255,255,.16)!important;background:linear-gradient(155deg,rgba(255,255,255,.13) 0%,rgba(255,255,255,.05) 45%,rgba(255,255,255,.03) 100%),var(--deep)!important;box-shadow:0 30px 70px -30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12)}
+.rhero .agecard:before{display:block;width:420px;height:420px;opacity:.38;top:-200px;right:-140px;filter:blur(90px)}
+.rhero .agecard:after{display:block;opacity:.12}
+.rhero .as-d.old b{color:var(--blush)}.rhero .as-d.old svg{stroke:var(--blush)}
+.rhero .as-d{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16);font-size:1rem}
+.rhero .as-chip{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14)}
+/* stat cards */
+.rhero .rh-stats{margin-top:48px;gap:20px}
+.rhero .rstat{border-radius:28px;padding:26px 30px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12)}
+.rhero .rstat small{font-size:.8125rem;color:var(--deep-ink);opacity:.8}
+.rhero .rstat b{font-weight:300}
+@media (max-width:640px){
+  .rhero .grid-bg{background-size:48px 48px}
+  .rhero .rbig{font-size:clamp(4.8rem,24vw,6.5rem)!important}
+  .rhero .gp{font-size:1.0625rem;padding:.7em 1.2em .7em 1em}
+  .rhero .agecard{border-radius:26px}
+  .rhero .rstat{border-radius:22px;padding:18px 18px}
+}
+@media (prefers-reduced-motion:reduce){.rhero .orb{animation:none}}
+/* =====================================================================
+   V52: homepage hero to match. Headline in the left column beside the
+   age card, a visible grid backdrop, a two-tone italic second line and
+   the same frosted age card as the results page.
+   ===================================================================== */
+/* V52: no grid lines on the homepage hero */
+.hm-hero .grid-bg{display:none!important}
+.hm-hero{padding:64px 0 72px}
+.hm-hero h1{font-size:clamp(3rem,5.6vw,5.75rem);line-height:1.02;letter-spacing:-.025em}
+.hm-hero h1 .grad{background:linear-gradient(100deg,#2F6461 0%,#5B4E66 55%,#9A3A62 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important;animation:none!important}
+/* room for the italic g's tail: the gradient only paints inside each word's box, so widen it without moving the text */
+.hm-hero h1 .grad{padding:0 .1em .22em .14em!important;margin:0 -.1em -.22em -.14em}
+.hm-hero h1 .ln-m{padding:0 .12em .24em .16em;margin:0 -.12em -.24em -.16em}
+:root[data-theme="dark"] .hm-hero h1 .grad{background:linear-gradient(100deg,var(--mint),var(--blush))!important;-webkit-background-clip:text!important;background-clip:text!important}
+.hm-hero .hm-lead{font-size:1.3125rem;line-height:1.6;margin:22px 0 30px;color:var(--muted)}
+.hm-hero .hm-trust{margin-top:22px}
+.hm-hero .btn.sea.lg{padding:1.05em 2.1em;font-size:1.125rem}
+.hm-hero .hm-link{font-size:1.125rem}
+@media (min-width:1001px){
+  .hm-hero-in{column-gap:72px;align-items:start}
+  .hm-hero-in h1{grid-column:1;grid-row:1;margin:28px 0 0}
+  .hm-hero-in .hm-viz{grid-column:2;grid-row:1/span 5;align-self:start}
+  .hm-hero-in .hm-lead{grid-row:2}
+  .hm-hero-in{grid-template-rows:auto auto auto auto auto 1fr;row-gap:0}
+  .hm-hero-in .hm-viz{grid-row:1/span 6}
+}
+.rhero .grid-bg{display:block!important}
+/* the frosted age card, same as the results header */
+.hm-viz .agecard,:root[data-theme="dark"] .hm-viz .agecard{position:relative;isolation:isolate;overflow:hidden;border-radius:34px;border:1px solid rgba(255,255,255,.14)!important;background:linear-gradient(155deg,rgba(255,255,255,.13) 0%,rgba(255,255,255,.05) 45%,rgba(255,255,255,.02) 100%),var(--deep)!important;color:var(--deep-ink);box-shadow:0 40px 80px -36px rgba(12,26,40,.55),inset 0 1px 0 rgba(255,255,255,.12)}
+.hm-viz .agecard:before{display:block;width:420px;height:420px;opacity:.38;top:-200px;right:-140px;filter:blur(90px)}
+.hm-viz .agecard:after{display:block;opacity:.12}
+.hm-viz .as-k{text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:.8125rem;color:var(--deep-ink);opacity:.85}
+.hm-viz .as-n{font-size:clamp(3rem,4.6vw,4rem);font-weight:300;letter-spacing:-.04em}
+.hm-viz .as-nv{background:linear-gradient(180deg,var(--deep-ink) 20%,color-mix(in srgb,var(--mint) 75%,var(--deep-ink)) 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent}
+.hm-viz .as-d{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16);font-size:1rem}
+.hm-viz .as-d.old b{color:var(--blush)}.hm-viz .as-d.old svg{stroke:var(--blush)}
+.hm-viz .as-chip{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14)}
+@media (max-width:640px){.hm-viz .agecard{border-radius:26px}.hm-hero h1{font-size:clamp(2.7rem,12vw,3.6rem)}}
 </style>
 </head>
 <body>
@@ -3870,7 +4071,7 @@ const app=$('#app');
 
 /* ---------- intake config ---------- */
 const STEPS=[
- {t:'About you',sub:'Your starting point. <b>Nothing leaves your browser.</b> Your answers are saved on this device only, so you can pick up later.',f:[
+ {t:'About you',sub:'Your starting point. <b>Your answers stay in your browser.</b> They’re saved on this device only, so you can pick up later.',f:[
   {id:'age',l:'Age',type:'number',min:18,max:100,u:'years',eg:42,req:1,hint:'Baseline is for adults 18 and older.'},
   {id:'sex',l:'Sex',type:'select',opts:[['','Select'],['m','Male'],['f','Female'],['o','Other']],def:'',req:1,hint:'Sets reference ranges and screening information. Your color theme follows your choice.'},
   {id:'rng',l:'Use reference ranges for',type:'select',showIf:['sex',['o']],opts:[['g','General'],['f','Female'],['m','Male']],def:'g',hint:'Sets lab ranges, calories and the female or male parts of your plan.'},
@@ -4018,15 +4219,8 @@ const FOCUS={energy:'energy',sleep:'sleep',muscle:'muscle and strength',heart:'h
 function setTheme(){const s=S.data.sex,r=document.documentElement;if(s)r.setAttribute('data-sex',s);else r.removeAttribute('data-sex');requestAnimationFrame(()=>{try{upbarSync()}catch(e){}})}
 
 /* ---------- science ---------- */
-function phenoAge(v){
-  const g=0.0076927;
-  const xb=-19.9067-0.0336*(v.alb*10)+0.0095*(v.creat*88.4)+0.1953*(v.glu/18.016)
-    +0.0954*Math.log(Math.max(v.crp,0.1)/10)-0.0120*v.lymph+0.0268*v.mcv+0.3306*v.rdw
-    +0.00188*v.alp+0.0554*v.wbc+0.0804*v.age;
-  let M=1-Math.exp(-Math.exp(xb)*(Math.exp(120*g)-1)/g);
-  M=Math.min(Math.max(M,1e-6),0.999);
-  const b=141.50225+Math.log(-0.00553*Math.log(1-M))/0.090165;
-  return Math.max(18,b);
+function phenoAge(v){ /* V52: part of the engine that loads after sign-in */
+  const E=window.__bsln;if(!E)throw new Error('BSLN_LOCKED: sign in to see your number');return E.phenoAge(v);
 }
 
 /* ===================== EVIDENCE ENGINE (research-backed) ===================== */
@@ -4131,79 +4325,8 @@ function screenData(d,r){
   return L;
 }
 
-function analyze(d){
-  const n=k=>{const v=d[k];return(v===''||v==null||isNaN(+v))?null:+v};
-  const age=n('age'),bmi=703*n('weight')/(n('height')**2);const sex=effSex(d);
-  const D=[];
-  const add=(label,y,note,o)=>D.push({label,yrs:r1(y),note,ev:(o&&o.ev)||'',src:(o&&o.src)||[],basis:(o&&o.basis)||'hr',c:(o&&o.c)||null});
-  const h=n('sleep'),q=n('sq');
-  /* Sleep: reference 7 to 8 h (HR 1.0). Short and long sleep HRs from dose-response meta-analyses. */
-  const sleepHR=h<5?1.15:h<6?1.10:h<7?1.05:h<8?1:h<9?1.03:h<10?1.13:1.25;
-  add('Sleep',hr2y(sleepHR)*.5,`${h} h a night (HR about ${sleepHR.toFixed(2)} vs 7 to 8 h), quality ${q}/5. Risk is lowest near 7 to 8 h.`,{ev:'Moderate',src:[RN.sleep],c:.5});
-  add('Stress load',(n('stress')-5)*.25,`Rated ${n('stress')}/10. Chronic stress is linked to blood pressure and inflammation, but no clean hazard ratio exists, so this is a modest judgment.`,{ev:'Limited',src:[],basis:'judgment'});
-  const EXHR=[1,.88,.80,.78,.75,.70,.67,.64],ex=n('ex'),exm=n('exmin')||30,wmin=ex*exm,eff=Math.min(7,wmin/30),elo=Math.floor(eff),hrE=EXHR[elo]+(EXHR[Math.min(7,elo+1)]-EXHR[elo])*(eff-elo);
-  add('Exercise',(hr2y(hrE)-hr2y(EXHR[2]))*.5,`${ex} cardio day${ex===1?'':'s'} a week, about ${wmin} min (the guideline is at least 150). Mortality about ${Math.round((1-hrE)*100)}% below inactive people.`,{ev:'Strong',src:[RN.arem,'zhao20'],c:.5});
-  const st=n('str')==null?0:n('str'),STRHR=[1,.88,.85,.85];
-  add('Strength training',(hr2y(STRHR[st])-hr2y(STRHR[1]))*.5,st===0?'No strength work. Benefit shows up at about 30 to 60 minutes a week (10 to 20% lower mortality).':`${st>=3?'3 or more':st} session${st===1?'':'s'} a week. Most of the benefit arrives by 30 to 60 minutes a week.`+(st>=2&&wmin>=150?' Meeting both the cardio and strength guidelines went with about 40% lower mortality than meeting neither in a large US cohort.':st>=2||wmin>=150?' Doing both cardio and strength went with the lowest mortality in a large US cohort.':''),{ev:'Moderate',src:[RN.momma,'zhao20'],c:.5});
-  const older=age>=60;
-  const STH=older?{lt4:1,'4to7':.55,'7to10':.45,gt10:.45}:{lt4:1,'4to7':.60,'7to10':.55,gt10:.55};
-  add('Daily steps',(hr2y(STH[d.steps])-hr2y(STH['4to7']))*.25,`Benefit levels off near ${older?'6,000 to 8,000':'8,000 to 10,000'} steps a day at your age (HR ${STH[d.steps]} vs the lowest-step group).`,{ev:'Moderate',src:[RN.steps],c:.25});
-  add('Diet quality',(n('diet')-3)*(hr2y(.80)/4)*.5,'Top versus bottom fifth of diet quality scores: HR about 0.80. Many whole-food eating patterns work.',{ev:'Moderate',src:[RN.diet],c:.5});
-  /* Alcohol: Wood 2018 life-expectancy loss by weekly grams; women's risk starts lower (Zhao 2023). */
-  const al=n('alc'),AP=[[7,0],[10.5,.5],[19.5,1.5],[37.5,4.5]];
-  let ay=0;if(al>7){if(al>=37.5)ay=4.5+Math.min(1.5,(al-37.5)*.1);else for(let i=1;i<AP.length;i++){if(al<=AP[i][0]){const a0=AP[i-1];ay=a0[1]+(al-a0[0])/(AP[i][0]-a0[0])*(AP[i][1]-a0[1]);break}}}
-  ay*=sex==='f'?1.3:sex==='o'?1.15:1;
-  add('Alcohol',ay,`${al} drinks a week (about ${Math.round(al*14)} g). Pooled data put the lowest-risk point near 7 drinks a week${sex==='f'?', and risk starts at lower intakes in women':''}.`,{ev:'Strong',src:[RN.wood,RN.zhao],c:1});
-  /* Smoking: Jha 2013 */
-  let sy=0,snote='Never smoked.';
-  if(d.smoke==='current'){sy=8;snote='Current smoking costs about 10 years of life in US data (death rate about 3 times higher).'}
-  else if(d.smoke==='former'){const res={u35:.2,'35':.8,'45':3.2,'55':4.8}[d.quitage]??.8;sy=res;snote=`Quit ${quitAgeLabel(d)||'at some point'}. Quitting by 45 to 54 regains about 6 of the 10 lost years, and before 40 regains almost all.`}
-  add('Smoking',sy,snote,{ev:'Strong',src:[RN.smoke],c:.8});
-  /* BMI: GBMC hazard ratios, scaled by age and sex (heterogeneity reported in the paper) */
-  const bmiHR=bmi<18.5?1.51:bmi<20?1.13:bmi<25?1:bmi<27.5?1.07:bmi<30?1.20:bmi<35?1.45:bmi<40?1.94:2.76;
-  const ageF=age<50?1.3:age<70?1:.75,sexF=sex==='m'?1.1:sex==='f'?.95:1;
-  add('Body composition',(Math.log(bmiHR)-Math.log(1.07))*ageF*sexF/LN109*.6,`BMI ${bmi.toFixed(1)} (HR ${bmiHR.toFixed(2)} vs BMI 22.5 to 25). BMI is crude, so waist size adds detail.`,{ev:'Strong',src:[RN.bmi],c:.6});
-  const wr=waistRatio(d);
-  if(wr!=null)add('Waist-to-height',wr>=.6?1:wr>=.5?.5:wr<.45?-.3:0,`Waist is ${(wr*100).toFixed(0)}% of height (ratio ${wr.toFixed(2)}). Under 0.5 is the usual target; 0.6 or more is high risk.`,{ev:'Moderate',src:[RN.waist],basis:'judgment'});
-  /* Social connection: Holt-Lunstad 2015 */
-  const soc=n('social')==null?3:n('social'),SOCHR=[1.29,1.20,1.13,1.05,1.0];
-  add('Social connection',(hr2y(SOCHR[soc-1])-hr2y(1.13))*.4*(age<65?1.2:1),`Time with close people rated ${soc}/5. Isolation and loneliness went with about 26 to 32% higher mortality odds.`,{ev:'Moderate',src:[RN.social],c:.4});
-  const rhr=n('rhr'),sbp=n('sbp'),glu=n('glu'),a1c=n('hba1c'),crp=n('crp'),ldl=n('ldl'),vd=n('vitd');
-  if(rhr!=null)add('Resting heart rate',rhr<55?-.6:rhr<65?-.3:rhr<=75?0:rhr<=85?.8:1.5,`${rhr} bpm. Lower resting rates track with higher fitness. Weight is a judgment, not a published conversion.`,{ev:'Limited',src:[],basis:'judgment'});
-  if(sbp!=null)add('Blood pressure',sbp<120?-.3:sbp<130?0:sbp<140?.6:1.5,`${sbp} mmHg systolic. The 2025 guideline goal is under 130/80 for most adults.`,{ev:'Strong',src:[RN.bp],basis:'judgment'});
-  const keys=['alb','creat','glu','crp','lymph','mcv','rdw','alp','wbc'];
-  const pheno=keys.every(k=>n(k)!==null);
-  const flags=[];
-  const fl=(label,val,status,note)=>flags.push({label,val,status,note});
-  if(glu!=null)fl('Fasting glucose',glu+' mg/dL',glu>=126?'high':glu>=100?'watch':'good',glu>=126?'Above the level where guidelines flag possible diabetes. Only a clinician can interpret this, so please follow up with one.':glu>=100?'Above the typical fasting range. Many people discuss this with a clinician. Post-meal walks and fiber are general habits linked to steadier blood sugar.':'Within the typical range.');
-  if(a1c!=null)fl('HbA1c',a1c+'%',a1c>=6.5?'high':a1c>=5.7?'watch':'good',a1c>=6.5?'Above the level where guidelines flag possible diabetes. Only a clinician can interpret this, so please follow up with one.':a1c>=5.7?'Above the typical range. A clinician can tell you what it means for you. Lifestyle habits are linked to lower HbA1c in research.':'Within the typical range.');
-  if(crp!=null)fl('hs-CRP',crp+' mg/L',crp>=3?'high':crp>=1?'watch':'good',crp>=10?'Well above the typical range. Recent illness or injury often explains this. Ask a clinician whether and when to recheck.':crp>=3?'Above the typical range. Infection can cause this. Ask a clinician whether and when to recheck.':crp>=1?'Slightly above the lowest range. Sleep, activity and waist size are linked to this marker.':'Within the lowest range.');
-  if(ldl!=null)fl('LDL cholesterol',ldl+' mg/dL',ldl>=160?'high':ldl>=130?'watch':'good',ldl>=160?'Well above the typical range. Please discuss it with a clinician.':ldl>=130?'Above the typical range. What it means depends on your overall heart risk, which a clinician can assess.':ldl>=100?'Within the typical range. Some guidelines use a stricter under-100 level. A clinician can say whether that applies to you.':'Within the typical range.');
-  if(vd!=null)fl('Vitamin D',vd+' ng/mL',vd<20?'high':vd<30?'watch':'good',vd<20?'Below the level many labs flag as low. Please discuss it with a clinician rather than self-treating.':vd<30?'Below 30. The 2024 guideline does not support routine extra vitamin D for healthy adults under 75, so this is worth a conversation with a clinician.':'Within the typical range.');
-  if(sbp!=null)fl('Systolic BP',sbp+' mmHg',sbp>=140?'high':sbp>=130?'watch':'good',sbp>=140?'Above the typical range. A single reading is not a diagnosis. Confirm with a validated home cuff and share the readings with a clinician.':sbp>=130?'Above the typical range. A single reading is not a diagnosis. Confirm with a validated home cuff and share the readings with a clinician.':sbp>=120?'Slightly above the lowest range. A clinician can say whether it matters for you.':'Within the typical range.');
-  const fer=n('ferr'),hdl=n('hdl'),cr=n('creat');
-  if(fer!=null){const hiF=sex==='f'?200:300;fl('Ferritin',fer+' ng/mL',(fer<30||fer>hiF)?'watch':'good',fer<30?(sex==='m'?'Below the typical range, which is uncommon in men. Please ask a clinician what could explain it.':'Below the typical range. Please discuss it with a clinician before taking any iron.'):fer>hiF?'Above the typical range. This can reflect many things, including inflammation. Please discuss it with a clinician, and check before taking any iron.':'Within the typical range.')}
-  if(hdl!=null){const lo=sex==='m'?40:sex==='f'?50:45;fl('HDL cholesterol',hdl+' mg/dL',hdl<lo?'watch':'good',hdl<lo?'Below '+lo+(sex==='m'?' for men':sex==='f'?' for women':', the general target')+'. Regular exercise is linked to higher HDL. A clinician can tell you whether it matters for you.':'Within the typical range.')}
-  const onCreatine=(d.taking||[]).includes('creatine');
-  if(cr!=null&&(cr>(sex==='m'?1.3:sex==='f'?1.1:1.2)||onCreatine))fl('Creatinine',cr+' mg/dL',cr>(sex==='m'?1.3:sex==='f'?1.1:1.2)?'watch':'good',(cr>(sex==='m'?1.3:sex==='f'?1.1:1.2)?'Above the usual '+(sex==='m'?'male':sex==='f'?'female':'general')+' range. ':'')+(onCreatine?'You take creatine, which is known to raise creatinine readings, often without any kidney problem. Only a clinician can interpret yours. It also nudges lab-based biological age up, so tell your clinician you take it.':'Muscle mass and creatine supplements can raise it. Ask a clinician.'));
-  let ldrv=[];
-  if(!pheno){
-    if(glu!=null)ldrv.push(['Fasting glucose',glu>=126?2.5:glu>=100?1:glu<90?-.3:0,`${glu} mg/dL`]);
-    if(a1c!=null)ldrv.push(['HbA1c',a1c>=6.5?3:a1c>=5.7?1.2:a1c<5.4?-.5:0,`${a1c}%`]);
-    if(crp!=null)ldrv.push(['hs-CRP',crp>=3?1.5:crp>=1?.3:-.5,`${crp} mg/L`]);
-    if(ldl!=null)ldrv.push(['LDL',ldl>=160?.8:ldl>=130?.3:0,`${ldl} mg/dL`]);
-    if(vd!=null)ldrv.push(['Vitamin D',vd<20?.5:0,`${vd} ng/mL`]);
-    ldrv.forEach(x=>add(x[0],x[1],x[2]+'. Included in the lifestyle estimate. Weight is a judgment, not a published conversion.',{ev:'Limited',src:[],basis:'judgment'}));
-  }
-  const total=D.reduce((s,x)=>s+x.yrs,0);
-  let bio,range,creatNudge=null,pm;
-  const pv=pheno?{age,alb:n('alb'),creat:n('creat'),glu:n('glu'),crp:n('crp'),lymph:n('lymph'),mcv:n('mcv'),rdw:n('rdw'),alp:n('alp'),wbc:n('wbc')}:null;
-  if(pheno){pm=2.5;bio=phenoAge(pv);creatNudge=r1(phenoAge({...pv,creat:pv.creat+.1})-bio);range='PhenoAge from one blood draw. Markers like CRP can shift it by <b>2 to 3 years</b> day to day.'}
-  else{bio=age+Math.max(-8,Math.min(10,total));const k=ldrv.length+(rhr!=null)+(sbp!=null);pm=k>=3?3.5:5;range=`Lifestyle estimate, roughly <b>±${k>=3?3.5:5} years</b>. Add all nine PhenoAge markers for a lab-based number.`}
-  bio=r1(bio);
-  D.sort((a,b)=>b.yrs-a.yrs);
-  const regain=Math.min(8,r1(D.filter(x=>x.yrs>0).reduce((s,x)=>s+x.yrs,0)*.6));
-  return{age,bio,pm,gap:r1(age-bio),pheno,range,drivers:D,flags,regain,bmi,n,sex,wr,creatNudge,onCreatine};
+function analyze(d){ /* V52: the scoring engine is downloaded only after sign-in (see /api/engine) */
+  const E=window.__bsln;if(!E)throw new Error('BSLN_LOCKED: sign in to see your number');return E.analyze(d);
 }
 
 function proj(res,adh,t){return res.bio-res.regain*(adh/100)*(1-Math.exp(-t/4))}
@@ -5151,7 +5274,7 @@ const FAQ=[
    ['What is biological age?','It is an estimate of how old your body is behaving, based on blood markers and lifestyle rather than your birthday. Two people who are both 42 can have very different biological ages.'],
    ['Do I need blood work?','No. Without labs you get a lifestyle-based estimate. With the nine PhenoAge markers you get a lab-based age, which is more precise. You can add labs later and re-run it.'],
    ['How accurate is it?','Treat it as a <b>statistical estimate, not a diagnosis</b>. One blood draw can vary, and lifestyle effects come mostly from observational research. That is why we encourage retesting every 12 weeks.'],
-   ['Is my data stored?','Nothing leaves your browser. Your answers are saved in this browser on this device only, so you can pick up where you left off. Saved data is deleted automatically after <b>12 months without a visit</b>, and you can delete it any time from the <a href="#privacy" data-act="page" data-p="privacy">Privacy policy</a>. On a shared computer, delete it when you finish.'],
+   ['Is my data stored?','Your answers never leave your browser. You sign in with an account, but your answers are saved in this browser on this device only, so you can pick up where you left off. Saved data is deleted automatically after <b>12 months without a visit</b>, and you can delete it any time from the <a href="#privacy" data-act="page" data-p="privacy">Privacy policy</a>. On a shared computer, delete it when you finish.'],
    ['Does this replace my doctor?','No. Baseline is an educational tool that shares general wellness information. It cannot diagnose, treat or prevent a condition, and it does not replace a clinician. Talk to a clinician or pharmacist before changing supplements, medication or training, especially if you have a condition.'],
    ['What does it cost?','Snapshot is free. <b>Core</b> is a one-time payment of $29 and <b>Pro</b> is a one-time payment of $49. Start free and pay only when you want the plan.']];
 function homeParts(){
@@ -5175,7 +5298,7 @@ function homeParts(){
         <h1>${words('Your birthday gives one number.','',0)} <br>${words('Your body gives another.','grad',5)}</h1>
         <p class="lead rv" style="--d:.5s">Enter your <b>labs</b>, <b>sleep</b>, <b>stress</b> and <b>goals</b>. Get your <b>biological age</b> estimate, what is linked to it, and a <b>wellness plan</b> built around those habits.</p>
         <div class="actions rv" style="--d:.65s"><button class="btn lg glow" data-act="start">Get your number</button><button class="btn lg outl" data-act="page" data-p="how">See how it works</button></div>
-        <div class="trust rv" style="--d:.8s"><span>${ic('check').replace('<svg','<svg')}Labs are optional</span><span>${ic('lock')}Nothing leaves your browser</span><span>${ic('clock')}Takes 5 minutes</span></div>
+        <div class="trust rv" style="--d:.8s"><span>${ic('check').replace('<svg','<svg')}Labs are optional</span><span>${ic('lock')}Answers stay in your browser</span><span>${ic('clock')}Takes 5 minutes</span></div>
       </div>
       <div class="hero-vis rv zoom" style="--d:.35s"><div id="heroScale"></div></div>
     </div>
@@ -6712,7 +6835,7 @@ function homeSimple(){
       <h1>Your birthday gives one number. <span class="hm-l2">${"Your body gives another.".split(" ").map(w=>`<span class="grad">${w}</span>`).join(" ")}</span></h1>
       <p class="hm-lead">Get a free estimate from your habits in about 2 minutes. Add nine standard blood markers for a sharper, lab-based number.</p>
       <div class="hm-act">${cta}<a href="#how" class="hm-link" data-act="page" data-p="how">See how it works</a></div>
-      <p class="hm-trust">Free to start. Labs optional. Nothing leaves your browser.</p>
+      <p class="hm-trust">Free with an account. Labs optional. Your answers stay in your browser.</p>
       ${resume}
     </div>
     <div class="hm-viz" aria-label="Illustrative example of a biological age result"><div id="heroScale"></div></div>
@@ -6730,7 +6853,7 @@ function homeSimple(){
 
   <section class="hm-sec hm-labs"><div class="wrap hm-split">
     <div>
-      <h2>Have recent blood work? Use it.</h2>
+      <h2>Have recent blood work?<br>Use it.</h2>
       <p>The nine markers come from three common tests, often drawn together: a <b>comprehensive metabolic panel (CMP)</b>, a <b>CBC with differential</b> and <b>hs-CRP</b>. Check your patient portal or a recent lab report, or ask about them at your next checkup.</p>
       <p class="hm-tip"><b>Test-day tip:</b> fast for 8 or more hours before the draw. If you’ve been sick in the last two weeks, hs-CRP can read high, so consider waiting.</p>
     </div>
@@ -6751,7 +6874,7 @@ function homeSimple(){
     <h2>Why you can trust the number</h2>
     <div class="hm-trio">
       <div><h3>Published research</h3><p>Lab-based estimates use the <b>Phenotypic Age (PhenoAge)</b> model (Levine et al., 2018). Baseline is not affiliated with its authors.</p></div>
-      <div><h3>Private by design</h3><p>Your answers are calculated and saved in your browser. <b>Nothing is sent to a server.</b></p></div>
+      <div><h3>Private by design</h3><p>Your answers are calculated and saved in your browser. <b>They’re never sent to a server.</b> Your account only holds your sign-in details.</p></div>
       <div><h3>An estimate, not a diagnosis</h3><p>Baseline shares general wellness information. Talk to a clinician before changing medication, supplements or training.</p></div>
     </div>
   </div></section>
@@ -8499,7 +8622,10 @@ viewHome=function(){const r=viewHome0.apply(this,arguments);const c=history.stat
 const showPage0=showPage;
 showPage=function(name,noPush){
   showPage0(name,noPush);
-  if(S.res||S._savedDone){const a=document.getElementById('app');if(a)a.insertAdjacentHTML('afterbegin',`<div class="wrap backres"><button type="button" class="btn ghost" data-act="myres">${ic('arrow')}<span>Back to my results</span></button></div>`)}
+  {const a=document.getElementById('app'),btn=`<button type="button" class="btn ghost" data-act="home">${ic('arrow')}<span>Back to homepage</span></button>`;
+    /* V52: a way back to the homepage, inside the page banner so it sits on the dark background */
+    const ph=a&&a.querySelector('.hero2.phero > .wrap');
+    if(ph)ph.insertAdjacentHTML('afterbegin',`<div class="backres in-hero">${btn}</div>`);else if(a)a.insertAdjacentHTML('afterbegin',`<div class="wrap backres">${btn}</div>`)}
   headerSync();
 };
 
@@ -8519,13 +8645,8 @@ const TSL=['Normal text','Large text','Extra large text'];
 function tsGet(){try{const v=+localStorage.getItem('baseline:textsize');return v>=0&&v<=2?v:0}catch(e){return 0}}
 function tsApply(v){document.documentElement.dataset.ts=String(v);document.querySelectorAll('.tsz button[data-ts]').forEach(b=>{const on=+b.dataset.ts===v;b.setAttribute('aria-checked',on);b.classList.toggle('on',on)});const c=document.querySelector('.tsz .ts-cyc');if(c){c.setAttribute('aria-label','Text size: '+TSL[v]+'. Tap to change.');c.title='Text size: '+TSL[v]}}
 function tsSet(v){try{localStorage.setItem('baseline:textsize',String(v))}catch(e){}tsApply(v)}
+/* V52: no text size control in the top bar; it stays in the More menu */
 (function(){
-  const nav=document.getElementById('nav'),tg=nav&&nav.querySelector('.themetg');
-  if(nav&&!nav.querySelector('.tsz')){
-    const w=document.createElement('div');w.className='tsz';w.setAttribute('role','radiogroup');w.setAttribute('aria-label','Text size');
-    w.innerHTML=[0,1,2].map(v=>`<button type="button" role="radio" data-act="ts" data-ts="${v}" aria-label="${TSL[v]}" title="${TSL[v]}"><span style="font-size:${[.8,.98,1.16][v]}rem">A</span></button>`).join('')+`<button type="button" class="ts-cyc" data-act="tscyc"><span>A</span><span>A</span></button>`;
-    nav.insertBefore(w,tg||nav.querySelector('.btn'));
-  }
   tsApply(tsGet());
 })();
 
@@ -10289,12 +10410,11 @@ function q41Show(dir){
   sc.forEach((s,i)=>s.nodes.forEach(n=>n.classList.toggle('qf-on',i===Q41.i)));
   const first=vi[0]===Q41.i;$('.formpanel2')?.classList.toggle('qf-first',first);
   const opts=[...cur.main.querySelectorAll('.seg [data-act=pick], .chips .chip, .tiles .tile')];
-  opts.forEach((b,k)=>{if(k<26&&!b.querySelector('.qk'))b.insertAdjacentHTML('beforeend',`<kbd class="qk" aria-hidden="true">${String.fromCharCode(65+k)}</kbd>`)});
   if(!calmMotion()&&dir){cur.nodes.forEach(n=>{n.classList.remove('qin','qin-b');void n.offsetWidth;n.classList.add(dir<0?'qin-b':'qin')})}
   const last=vi[vi.length-1]===Q41.i,nb=$('.nav-row2 [data-act=next]'),bb=$('.nav-row2 [data-act=back]');
   if(nb){if(!nb.dataset.orig)nb.dataset.orig=nb.innerHTML;nb.innerHTML=last?nb.dataset.orig:`Next${ic('arrow')}`}
   if(bb){if(!bb.dataset.orig)bb.dataset.orig=bb.innerHTML;bb.innerHTML=first?bb.dataset.orig:'Back'}
-  const hint=$('#q41Hint');if(hint)hint.textContent=opts.length?(opts.length>1?`Tip: press ${String.fromCharCode(65)} to ${String.fromCharCode(64+Math.min(opts.length,26))} to answer, Enter for next.`:''):'Press Enter for the next question.';
+  const hint=$('#q41Hint');if(hint)hint.textContent='Tip: press Enter for the next question.';
   q41Tiles();
   if(dir){const f=cur.main.querySelector('input:not([type=hidden]):not(.sr),button.opt.on,button.opt,label.chip input,label.tile input');
     try{f&&f.focus({preventScroll:true})}catch(e){}
@@ -10335,21 +10455,11 @@ document.addEventListener('click',e=>{
   if(a==='next'){if(Q41.pass){Q41.pass=false;return}const vi=q41VisIdx();if(vi.indexOf(Q41.i)<vi.length-1){e.stopImmediatePropagation();e.preventDefault();q41Next()}return}
   if(a==='back'){const vi=q41VisIdx(),pos=vi.indexOf(Q41.i);if(pos>0){e.stopImmediatePropagation();e.preventDefault();peek();q41Go(vi[pos-1],-1)}else Q41.end=true;return}
 },true);
-/* tap an answer and move on */
-document.addEventListener('click',e=>{
-  const t=e.target.closest&&e.target.closest('[data-act=pick]');if(!t||!q41On())return;
-  const cur=Q41.screens[Q41.i];if(!cur||!cur.main.contains(t))return;const key=cur.key,id=t.dataset.id;
-  setTimeout(()=>{const now=Q41.screens[Q41.i],sel=$('#f_'+id);if(now&&now.key===key&&sel&&sel.value!==''&&S.view==='intake'){applyShowIf();q41Next()}},calmMotion()?80:420);
-});
-/* A to Z picks an answer, Enter moves on */
+/* V52: tapping an answer only selects it; Next (or Enter) moves on */
 document.addEventListener('keydown',e=>{
   if(!q41On()||e.altKey||e.ctrlKey||e.metaKey||e.defaultPrevented)return;
   const tg=e.target,typing=tg.matches&&tg.matches('input[type=number],input[type=text],input[type=time],input:not([type]),textarea,select');
   if(e.key==='Enter'){if(tg.matches&&(tg.matches('textarea')||tg.closest('button,a')))return;e.preventDefault();e.stopImmediatePropagation();$('.nav-row2 [data-act=next]')?.click();return}
-  if(typing||!/^[a-z]$/i.test(e.key))return;
-  const cur=Q41.screens[Q41.i];if(!cur)return;
-  const opts=[...cur.main.querySelectorAll('.seg [data-act=pick], .chips .chip, .tiles .tile')],k=e.key.toUpperCase().charCodeAt(0)-65;
-  if(opts[k]){e.preventDefault();e.stopImmediatePropagation();opts[k].click();const f=opts[k].matches('label')?opts[k].querySelector('input'):opts[k];try{f.focus({preventScroll:true})}catch(x){}}
 },true);
 
 /* ---------- 4. the 12-week program as a game ---------- */
@@ -10383,7 +10493,7 @@ function gmStats(){
 function gmHTML(s){
   const g=gmLoad(),nm=LV41[s.lv-1][1],pct=s.hi?Math.round((s.pts-s.lo)/(s.hi-s.lo)*100):100;
   const stops=Array.from({length:12},(_,k)=>{const n=k+1,W=s.P.weeks[k],clr=n<=s.cur&&weekDone(s.p,W)===W.tasks.length;
-    return `<li class="gm-stop${clr?' clr':''}${n===s.cur?' cur':''}${n>s.cur?' fut':''}" title="Week ${n}: ${W.title}"><i></i><span>${n}</span></li>`}).join('');
+    return `<li class="gm-stop${clr?' clr':''}${n<s.cur&&!clr?' past':''}${n===s.cur?' cur':''}${n>s.cur?' fut':''}" title="Week ${n}: ${W.title}"><i></i><span>${n}</span></li>`}).join('');
   const you=((s.cur-1)+Math.min(.92,s.frac))/11*100;
   const badges=BD41.map(b=>{const on=b[3](s);return `<li class="gm-b${on?' on':''}" data-b="${b[0]}"><span class="gm-bi" aria-hidden="true">${on?ic('check'):ic('lock')}</span><b>${b[1]}</b><small>${on?'Unlocked':b[2]}</small></li>`}).join('');
   const r=26,C=2*Math.PI*r,tf=s.todayT?s.todayN/s.todayT:0;
@@ -10395,7 +10505,7 @@ function gmHTML(s){
     <div class="gm-st"><span class="gm-flame" aria-hidden="true"><i></i><i></i></span><b>${s.streak}</b><small>${s.streak===1?'day':'days'} in a row</small></div>
     <div class="gm-td"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="${r}" class="t"/><circle cx="32" cy="32" r="${r}" class="f" style="stroke-dasharray:${C.toFixed(1)};stroke-dashoffset:${(C*(1-tf)).toFixed(1)}"/></svg><span><b>${s.todayN} of ${s.todayT}</b><small>habits today</small></span></div>
    </div>
-   <div class="gm-trail"><ol class="gm-stops" aria-label="Your 12 weeks: week ${s.cur} now, ${s.weeks} cleared">${stops}</ol><span class="gm-you" style="--p:${(you/100).toFixed(3)}" aria-hidden="true"></span></div>
+   <div class="gm-trail"><ol class="gm-stops" style="--p:${Math.min(1,Math.max(0,you/100)).toFixed(3)}" aria-label="Your 12 weeks: week ${s.cur} now, ${s.weeks} cleared">${stops}</ol></div>
    <details class="gm-bd"${g.open?' open':''}><summary><span>Badges</span><em>${BD41.filter(b=>b[3](s)).length} of ${BD41.length}</em></summary><ul class="gm-bl">${badges}</ul></details>
    <p class="gm-how">Each day you check off: <b>+10</b>. Each weekly goal met: <b>+50</b>. Each week cleared: <b>+100</b>.</p>
   </section>`;
@@ -10925,6 +11035,7 @@ const _gate45=gate;gate=function(){const h=_gate45.apply(this,arguments);return 
        <div class="tour-frame" aria-hidden="true">${pn.join('')}</div></div></div></section>`;
   }
   function tourInsert(){
+    return; /* V52: the Inside your plan section is no longer shown; How it works leads straight to the blood work section */
     const how=document.getElementById('how');if(!how||document.getElementById('tour'))return;
     how.insertAdjacentHTML('afterend',tourHTML());
     const f=document.querySelector('.tour-frame .tour-pn');if(f)f.classList.add('on');
@@ -11030,7 +11141,7 @@ const _gate45=gate;gate=function(){const h=_gate45.apply(this,arguments);return 
 
 /* ===================== V49: privacy policy, terms, storage notice, retention, delete my data ===================== */
 /* Edit LEGAL to fill in the placeholders. Anything in [brackets] shows highlighted on the page until it's replaced. */
-const LEGAL={company:'Baseline Health',email:'kdacker@email.sc.edu',address:'',phone:'',state:'South Carolina',refundDays:30,updated:'November 1, 2026',keepMonths:12,mailMonths:24};
+const LEGAL={company:'Baseline Health',email:'bslnhealth@gmail.com',address:'',phone:'',state:'South Carolina',refundDays:30,updated:'November 2, 2026',keepMonths:12,mailMonths:24};
 function bizHTML(){try{return `<p><b>${lgv(LEGAL.company)}</b><br>${LEGAL.address?lgv(LEGAL.address)+'<br>':''}Email: ${lgMail()}${LEGAL.phone?`<br>Phone: <a href="tel:${LEGAL.phone.replace(/[^+0-9]/g,'')}">${LEGAL.phone}</a>`:''}</p>`}catch(e){return ''}}
 const lgv=v=>/^\[/.test(v)?`<mark class="legal-ph">${v}</mark>`:v;
 const lgMail=()=>/^\[/.test(LEGAL.email)?lgv(LEGAL.email):`<a href="mailto:${LEGAL.email}">${LEGAL.email}</a>`;
@@ -11042,11 +11153,11 @@ function privacyHTML(){
   const S1=[
    ['who','Who we are',`<p>Baseline (bsln-health.com) is run by ${lgv(LEGAL.company)}. This policy explains what happens to your information when you use the website. Questions go to ${lgMail()}.</p>`],
    ['device','What stays on your device',`<p>To make the app work, Baseline saves these in your browser’s local storage, on this device only:</p><ul><li>your answers and any lab values you enter</li><li>your results and check-in history</li><li>your 12-week program progress, habit checks, points and badges</li><li>your workout plan, logged sets and strength log</li><li>your reminder time, theme and text size</li><li>whether you’ve seen the tour and this site’s privacy notice</li></ul><p>None of this is sent to Baseline, and we can’t see it. We only ask questions your estimate or plan actually uses. If you change an answer so a follow-up question no longer applies (for example, switching to “never smoked”), the old follow-up answer is deleted when your answers are saved.</p>`],
-   ['receive','What we receive',`<p><b>Nothing you type into Baseline.</b> The site has no accounts, no server-side database, no analytics and no forms that send data anywhere. Its security settings block Baseline’s own code from making network requests.</p><p><b>Our web host (Netlify)</b> delivers the page. Like any web server, it receives standard request information, such as your IP address, browser type and the time of the request, to serve the site and prevent abuse. That’s the only outside service involved when the page loads: the fonts and images are built into the page, so nothing is requested from Google or anyone else.</p><p>Other sites are only involved if you choose to open them: <b>Google Calendar</b> (when you add a weekly reminder there), <b>Amazon</b> (from “Find on Amazon”) and the <b>research sources</b> we link to. Each follows its own privacy policy.</p>`],
-   ['cookies','Cookies and tracking',`<p>Baseline <b>doesn’t set cookies</b> and doesn’t use analytics, advertising IDs or tracking pixels. It uses your browser’s local storage and session storage only for features you ask for, like remembering your answers and progress. That storage is never used to track you, so there’s nothing to opt into. We show a short notice on your first visit so you know it’s there, and you can delete it any time.</p><p><b>If we ever add analytics or other trackers,</b> they’ll stay off until you turn them on in <button type="button" class="linkbtn" data-act="v51-choices">Privacy choices</button>. Saying no is as easy as saying yes, and we honor the Global Privacy Control signal from your browser as a no. The site’s security settings also block outside scripts, so nothing can load without us changing them on purpose.</p>`],
+   ['receive','What we receive',`<p><b>Your account details, and nothing from your answers.</b> You need an account to get your number. Our sign-in provider, <b>Clerk</b>, stores your email address (and your name and profile photo if you sign in with Google) and keeps you signed in. Clerk may run a Cloudflare check when you sign up to block bots. Your answers, labs and progress are never sent to Clerk or to us: they’re calculated and saved in your browser. There’s no server-side database of your answers and no analytics. Once you’re signed in, the page downloads its scoring code from our own site, which first checks your sign-in with Clerk. Your answers aren’t part of that request. The page’s security settings only let it talk to Clerk and to our own site. You can delete your account any time from the account menu.</p><p><b>Our web host (Netlify)</b> delivers the page. Like any web server, it receives standard request information, such as your IP address, browser type and the time of the request, to serve the site and prevent abuse. Apart from Clerk, that’s the only outside service involved: the fonts and images are built into the page, so nothing is requested from Google or anyone else.</p><p>Other sites are only involved if you choose to open them: <b>Google Calendar</b> (when you add a weekly reminder there), <b>Amazon</b> (from “Find on Amazon”) and the <b>research sources</b> we link to. Each follows its own privacy policy.</p>`],
+   ['cookies','Cookies and tracking',`<p>Baseline only uses the cookies our sign-in provider, Clerk, needs to keep you signed in. It <b>doesn’t use analytics, advertising IDs or tracking pixels</b>. It uses your browser’s local storage and session storage only for features you ask for, like remembering your answers and progress. That storage is never used to track you, so there’s nothing to opt into. We show a short notice on your first visit so you know it’s there, and you can delete it any time.</p><p><b>If we ever add analytics or other trackers,</b> they’ll stay off until you turn them on in <button type="button" class="linkbtn" data-act="v51-choices">Privacy choices</button>. Saying no is as easy as saying yes, and we honor the Global Privacy Control signal from your browser as a no. The site’s security settings also block outside scripts, so nothing can load without us changing them on purpose.</p>`],
    ['ai','AI and your data',`<p><b>We don’t use your information to train AI models, and we don’t let anyone else do it.</b> Your answers never leave your device, so they can’t reach us, our host or any AI company. We will never use your data for AI training without asking you first and getting a clear yes.</p><p>We also ask AI crawlers not to collect Baseline’s own content, and our Terms don’t allow copying the site to train AI.</p>`],
    ['retention','How long data is kept',`<ul><li><b>On your device:</b> until you delete it, or <b>${LEGAL.keepMonths} months after your last visit</b>, whichever comes first. If you come back after more than ${LEGAL.keepMonths} months away, Baseline deletes everything it saved before the page loads.</li><li><b>Logged sets</b> in today’s workout: 60 days.</li><li><b>Session-only flags</b>, such as whether the upgrade bar has shown: cleared when you close the tab.</li><li><b>Your browser may delete it sooner.</b> Safari can clear site data after 7 days without a visit unless Baseline is on your Home Screen. Clearing your browsing data also removes it.</li><li><b>On our side:</b> we keep no copy of your answers or results, so there’s nothing to retain.</li><li><b>Emails you send us:</b> kept for up to ${LEGAL.mailMonths} months after the conversation ends, then deleted, unless the law requires us to keep them longer.</li><li><b>Host request logs:</b> kept by Netlify for a limited time under its own policy.</li></ul>`],
-   ['email','Emails and unsubscribing',`<p>Baseline doesn’t collect email addresses and doesn’t send marketing emails today. If we start a mailing list:</p><ul><li>you’ll only get marketing emails if you sign up for them</li><li>every marketing email will include a <b>one-click unsubscribe link</b>, and unsubscribing will never require signing in or paying</li><li>we’ll stop marketing emails within <b>2 business days</b> of your request</li><li>we won’t sell or rent the list, and we’ll update this policy before the first email goes out</li></ul><p>You can also unsubscribe any time by writing to ${lgMail()} with “Unsubscribe” in the subject line.</p>`],
+   ['email','Emails and unsubscribing',`<p>Baseline uses your email address only to run your account, through our sign-in provider, Clerk. We don’t send marketing emails today. If we start a mailing list:</p><ul><li>you’ll only get marketing emails if you sign up for them</li><li>every marketing email will include a <b>one-click unsubscribe link</b>, and unsubscribing will never require signing in or paying</li><li>we’ll stop marketing emails within <b>2 business days</b> of your request</li><li>we won’t sell or rent the list, and we’ll update this policy before the first email goes out</li></ul><p>You can also unsubscribe any time by writing to ${lgMail()} with “Unsubscribe” in the subject line.</p>`],
    ['payments','Payments',`<p>Baseline doesn’t take payments yet, and paid features are unlocked in your browser. Before we charge, we’ll update this policy to name our payment processor. Card details will go straight to that processor, and we won’t send your health answers to it.</p>`],
    ['choices','Your choices and rights',`<p>Because we don’t hold your answers, there’s nothing for us to look up, correct or delete on our side. You control the copy in your browser:</p>${lgDel()}<p>Depending on where you live, such as California or Washington, you may have rights to know, correct or delete personal information and to opt out of its sale. <b>We don’t sell or share personal information</b>, and we don’t collect consumer health data on our systems. Send any request to ${lgMail()} and we’ll respond within 45 days.</p>`],
    ['shared','Shared devices',`<p>Anyone using the same browser can see what’s saved there, including your results. On a shared or public computer, use <b>Delete my data</b> when you finish.</p>`],
@@ -11057,7 +11168,7 @@ function privacyHTML(){
   ];
   return phero('Privacy policy','Your answers stay <span class="grad">on your device.</span>',`Last updated ${LEGAL.updated}.`)+
   `<section class="band"><div class="wrap"><div class="legal">
-   <div class="legal-sum"><h2>The short version</h2><ul><li>No accounts, no server database, no ads and no tracking.</li><li>Your answers, labs and progress are saved only in this browser, on this device.</li><li>No cookies.</li><li>Saved data is deleted automatically after ${LEGAL.keepMonths} months without a visit, and you can delete it any time.</li><li>We don’t sell or share your personal information, and we don’t use it to train AI.</li></ul></div>
+   <div class="legal-sum"><h2>The short version</h2><ul><li>Accounts run through Clerk, which stores your email to sign you in. No database of your answers, no ads and no tracking.</li><li>Your answers, labs and progress are saved only in this browser, on this device.</li><li>Only the cookies needed to keep you signed in.</li><li>Saved data is deleted automatically after ${LEGAL.keepMonths} months without a visit, and you can delete it any time.</li><li>We don’t sell or share your personal information, and we don’t use it to train AI.</li></ul></div>
    ${lgToc(S1)}${S1.map(s=>lgSec(...s)).join('')}
   </div></div></section>`;
 }
@@ -11100,7 +11211,7 @@ function v49Notice(){
   try{if(sessionStorage.getItem('baseline:expired')){sessionStorage.removeItem('baseline:expired');msg=`<b>Welcome back.</b> It’s been more than ${LEGAL.keepMonths} months, so the data saved here was deleted.`}}catch(e){}
   if(!msg&&seen)return;
   const el=document.createElement('div');el.className='v49n';el.setAttribute('role','region');el.setAttribute('aria-label','Privacy notice');
-  el.innerHTML=`<p>${msg||`<b>No cookies, no tracking.</b> Baseline saves your answers only in this browser so you can come back to them. They’re deleted after ${LEGAL.keepMonths} months without a visit.`}</p><div class="v49n-a"><button type="button" class="btn ghost" data-act="page" data-p="privacy">Privacy policy</button><button type="button" class="btn sea" data-act="v49-ok">Got it</button></div>`;
+  el.innerHTML=`<p>${msg||`<b>No tracking.</b> Baseline only uses cookies to keep you signed in, and saves your answers only in this browser so you can come back to them. They’re deleted after ${LEGAL.keepMonths} months without a visit.`}</p><div class="v49n-a"><button type="button" class="btn ghost" data-act="page" data-p="privacy">Privacy policy</button><button type="button" class="btn sea" data-act="v49-ok">Got it</button></div>`;
   document.body.appendChild(el);
 }
 
@@ -11123,7 +11234,7 @@ if(_dl49==='privacy'||_dl49==='terms')showPage(_dl49,true);
 
 /* ===================== V50: agree to terms, data access and requests, keyboard fixes ===================== */
 /* Bump AGREE50.v whenever the Terms or Privacy policy change in a way people should agree to again. */
-const AGREE50={key:'baseline:agree:v1',v:'2026-11-01'};
+const AGREE50={key:'baseline:agree:v1',v:'2026-11-02'};
 function v50Agreed(){try{const a=JSON.parse(localStorage.getItem(AGREE50.key)||'null');return !!(a&&a.v===AGREE50.v)}catch(e){return false}}
 function v50Rec(){try{return JSON.parse(localStorage.getItem(AGREE50.key)||'null')||{}}catch(e){return {}}}
 function v50SetAgree(on,where){try{const r=v50Rec(),log=Array.isArray(r.log)?r.log:[],now=new Date().toISOString(),docs=where==='checkout'?['terms','privacy','refunds']:['terms','privacy'];
@@ -11318,7 +11429,7 @@ FAQX.push(
  {g:'Plans and pricing',q:'Is Baseline a subscription? How do I cancel?',a:'No. Every plan is a <b>one-time payment</b>. Nothing renews, you’re never charged again, and there’s nothing to cancel.'},
  {g:'Plans and pricing',q:'Can I get a refund?',a:`Yes. Email us within <b>${LEGAL.refundDays} days</b> of buying for a full refund, no reason needed. See the <a href="#terms" data-act="page" data-p="terms">Terms of service</a> for details.`},
  {g:'Your data and privacy',q:'Do you use my data to train AI?',a:'No. Your answers never leave your device, so they can’t reach us or any AI company. We will never use your data for AI training without asking you first.'},
- {g:'Your data and privacy',q:'Do you use cookies or trackers?',a:'No cookies, analytics or ads. If that ever changes, anything that tracks you stays off until you turn it on in <b>Privacy choices</b>.'}
+ {g:'Your data and privacy',q:'Do you use cookies or trackers?',a:'No analytics, ads or tracking cookies. The only cookies keep you signed in. If that ever changes, anything that tracks you stays off until you turn it on in <b>Privacy choices</b>.'}
 );
 
 /* 5. Business details in every footer */
@@ -11341,6 +11452,124 @@ document.addEventListener('click',e=>{
 v51Foot();c51Apply();setTimeout(c51Banner,10);
 /* re-save once so answers saved before V51 drop any follow-ups that no longer apply */
 try{const raw=localStorage.getItem(SAVEKEY);if(raw){const o=JSON.parse(raw);if(o&&o.data){o.data=v51Prune(o.data);localStorage.setItem(SAVEKEY,JSON.stringify(o))}}}catch(e){}
+</script>
+<script>
+/* =====================================================================
+   V52: accounts with Clerk. People must be signed in to start the
+   questionnaire or see a number. Answers still stay in this browser;
+   Clerk only holds the sign-in details.
+   To switch Clerk instances, change CLERK_PK below (and the domains in
+   the Content-Security-Policy meta tag at the top of the page).
+   ===================================================================== */
+const CLERK_PK='pk_REPLACE_WITH_YOUR_PUBLISHABLE_KEY';
+const CLERK_JS='5'; /* major version of Clerk's browser script */
+const ENGINE_URL='/api/engine'; /* Netlify Function that serves the scoring code to signed-in accounts only */
+const AUTH52={state:'loading',pending:null,lastTap:0,wasIn:false,engine:'none'};
+const AUTH_KEEP=['baseline:theme','baseline:textsize','baseline:agree:v1','baseline:tour:v1','baseline:consent:v1','baseline:lastseen:v1','baseline:owner'];
+const authIn=()=>!!(window.Clerk&&window.Clerk.user);
+const authReady=()=>authIn()&&!!window.__bsln;
+function authFapi(pk){try{const b=pk.split('_')[2];const d=atob(b+'==='.slice((b.length+3)%4));return d.endsWith('$')?d.slice(0,-1):null}catch(e){return null}}
+
+/* keep each account's saved answers apart on a shared browser */
+function authPersonalKeys(){const ks=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.indexOf('baseline:')===0&&k.indexOf('baseline:archive:')!==0&&!AUTH_KEEP.includes(k))ks.push(k)}}catch(e){}return ks}
+function authStash(owner){if(!owner)return;try{const o={};authPersonalKeys().forEach(k=>{o[k]=localStorage.getItem(k);localStorage.removeItem(k)});if(Object.keys(o).length)localStorage.setItem('baseline:archive:'+owner,JSON.stringify(o))}catch(e){}}
+function authRestore(id){try{const raw=localStorage.getItem('baseline:archive:'+id);if(!raw)return false;const o=JSON.parse(raw);Object.keys(o).forEach(k=>localStorage.setItem(k,o[k]));localStorage.removeItem('baseline:archive:'+id);return true}catch(e){return false}}
+/* returns true if the page has to reload to load another account's answers */
+function authClaim(id){let owner=null;try{owner=localStorage.getItem('baseline:owner')}catch(e){}
+  if(owner===id)return false;
+  let changed=false;
+  if(owner){authStash(owner);changed=true}
+  /* a different account was here, or this account had answers put away: restore them */
+  if(owner||!authPersonalKeys().length)changed=authRestore(id)||changed;
+  try{localStorage.setItem('baseline:owner',id)}catch(e){}
+  return changed;}
+
+/* the gate */
+function authNotice(msg){let d=document.getElementById('auth52');
+  if(!d){d=document.createElement('dialog');d.id='auth52';d.className='auth52';document.body.appendChild(d)}
+  d.innerHTML=`<h2>Sign in to get your number</h2><p>${msg}</p><div class="auth52-a"><button type="button" class="btn sea" data-act="auth52-x">OK</button></div>`;
+  try{d.showModal()}catch(e){d.setAttribute('open','')}}
+function authOpen(mode){
+  if(AUTH52.state==='ready'){const back=location.href;const o={forceRedirectUrl:back,signInForceRedirectUrl:back,signUpForceRedirectUrl:back};
+    try{mode==='in'?Clerk.openSignIn(o):Clerk.openSignUp(o)}catch(e){authNotice('Sign-in couldn’t open. Please refresh the page and try again.')}return}
+  if(AUTH52.state==='loading'){AUTH52.openWhenReady=mode||'up';return}
+  authNotice('Sign-in isn’t available right now. Please check your connection, refresh the page and try again.');}
+function authGate(name,run){
+  if(authReady())return run();
+  if(authIn()){AUTH52.pending=name;try{sessionStorage.setItem('baseline:intent',name)}catch(e){}if(typeof S!=='undefined'&&S.view!=='home'){S.view='home';try{viewHome()}catch(e){}}authEngine();return}
+  AUTH52.pending=name;try{sessionStorage.setItem('baseline:intent',name)}catch(e){}
+  if(typeof S!=='undefined'&&S.view!=='home'){S.view='home';try{viewHome()}catch(e){}}
+  if(Date.now()-AUTH52.lastTap<2000)authOpen('up');}
+function authResume(){let name=AUTH52.pending;try{name=name||sessionStorage.getItem('baseline:intent');sessionStorage.removeItem('baseline:intent')}catch(e){}
+  AUTH52.pending=null;if(!name||!authReady())return;
+  if(name==='results'&&S.res){S.view='results';viewResults(false);window.scrollTo(0,0)}
+  else{S.view='intake';viewIntake();window.scrollTo(0,0)}}
+document.addEventListener('click',()=>{AUTH52.lastTap=Date.now()},true);
+document.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('[data-act]');if(!t)return;const a=t.dataset.act;
+  if(a==='auth52-x'){const d=document.getElementById('auth52');if(d)d.close()}
+  if(a==='auth52-in'){authOpen('in')}});
+
+/* nothing that makes or shows a number runs without an account */
+viewIntake=(f=>function(){return authGate('intake',()=>f.apply(this,arguments))})(viewIntake);
+analyzeFlow=(f=>function(){return authGate('intake',()=>f.apply(this,arguments))})(analyzeFlow);
+viewResults=(f=>function(){return authGate('results',()=>f.apply(this,arguments))})(viewResults);
+openMyResults=(f=>function(){return authGate('results',()=>f.apply(this,arguments))})(openMyResults);
+
+/* the scoring code itself is only sent to signed-in accounts: the server checks the Clerk session first */
+async function authEngine(){
+  if(window.__bsln||AUTH52.engine==='loading'||!authIn())return;
+  AUTH52.engine='loading';
+  let tok=null;try{tok=await Clerk.session.getToken()}catch(e){}
+  if(!tok){AUTH52.engine='none';authNotice('We couldn’t confirm your sign-in. Please refresh the page and try again.');return}
+  const s=document.createElement('script');s.async=true;
+  s.src=ENGINE_URL+'?t='+encodeURIComponent(tok)+'&_='+Date.now();
+  s.onload=()=>{s.remove();if(window.__bsln){AUTH52.engine='ready';authResume()}else{AUTH52.engine='none';authNotice('Your number couldn’t load. Please refresh the page and try again.')}};
+  s.onerror=()=>{s.remove();AUTH52.engine='none';if(AUTH52.pending)authNotice('Your number couldn’t load. Please check your connection, refresh the page and try again.')};
+  document.head.appendChild(s);
+}
+/* other ways into a number: the bottom bar, the weekly check-in and "see your last estimate" */
+bnGo=(f=>function(k){if(k==='more'||!hasRes())return f.apply(this,arguments);return authGate('results',()=>f.apply(this,arguments))})(bnGo);
+ckSave=(f=>function(){return authGate('results',()=>f.apply(this,arguments))})(ckSave);
+cktmToResults=(f=>function(){return authGate('results',()=>f.apply(this,arguments))})(cktmToResults);
+document.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('[data-act="resume"]');if(!t||authReady())return;
+  e.preventDefault();e.stopImmediatePropagation();authGate('results',()=>{});},true);
+
+/* account button in the top bar: Log in when signed out, the account menu when signed in */
+function authBar(){const nav=document.getElementById('nav');if(!nav)return;let el=document.getElementById('acct52');
+  if(!el){el=document.createElement('span');el.id='acct52';el.className='acct52';nav.insertBefore(el,nav.querySelector('.btn[data-act=start]')||null)}
+  if(authIn()){if(!el.dataset.mounted){el.innerHTML='';try{Clerk.mountUserButton(el);el.dataset.mounted='1'}catch(e){}}}
+  else{if(el.dataset.mounted){try{Clerk.unmountUserButton(el)}catch(e){}delete el.dataset.mounted}
+    el.innerHTML=`<button type="button" class="linkbtn acct52-in" data-act="auth52-in">Log in</button>`}}
+
+/* load Clerk */
+(function(){
+  const fapi=authFapi(CLERK_PK);
+  if(!fapi||CLERK_PK.indexOf('REPLACE')>=0){AUTH52.state='off';console.warn('Baseline: add your Clerk publishable key (CLERK_PK) to turn on sign-in.');authBar();return}
+  const s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';s.type='text/javascript';
+  s.setAttribute('data-clerk-publishable-key',CLERK_PK);
+  s.src=`https://${fapi}/npm/@clerk/clerk-js@${CLERK_JS}/dist/clerk.browser.js`;
+  s.onerror=()=>{AUTH52.state='off';authBar();if(AUTH52.openWhenReady)authOpen()};
+  s.onload=async()=>{
+    try{await window.Clerk.load()}catch(e){AUTH52.state='off';authBar();return}
+    AUTH52.state='ready';
+    if(authIn()){AUTH52.wasIn=true;if(authClaim(Clerk.user.id)){location.reload();return}}
+    authBar();if(authIn())authEngine();
+    Clerk.addListener(({user})=>{
+      if(user){
+        if(!AUTH52.wasIn){AUTH52.wasIn=true;if(authClaim(user.id)){location.reload();return}authBar();authEngine()}
+        else authBar();
+      }else if(AUTH52.wasIn){
+        /* signed out: put this account's answers away so the next person on this browser can't see them */
+        AUTH52.wasIn=false;let owner=null;try{owner=localStorage.getItem('baseline:owner');localStorage.removeItem('baseline:owner')}catch(e){}
+        authStash(owner);try{sessionStorage.removeItem('baseline:intent')}catch(e){}
+        location.hash='';location.reload();
+      }
+    });
+    if(AUTH52.openWhenReady){const m=AUTH52.openWhenReady;AUTH52.openWhenReady=null;if(!authIn())authOpen(m)}
+  };
+  document.head.appendChild(s);
+  authBar();
+})();
 </script>
 </body>
 </html>
