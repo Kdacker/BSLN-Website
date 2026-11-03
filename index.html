@@ -11461,7 +11461,7 @@ try{const raw=localStorage.getItem(SAVEKEY);if(raw){const o=JSON.parse(raw);if(o
    To switch Clerk instances, change CLERK_PK below (and the domains in
    the Content-Security-Policy meta tag at the top of the page).
    ===================================================================== */
-const CLERK_PK='pk_REPLACE_WITH_YOUR_PUBLISHABLE_KEY';
+const CLERK_PK='VITE_CLERK_PUBLISHABLE_KEY=pk_test_Y29udGVudC1nb2JibGVyLTMyMjUuY2xlcmsuYWNjb3VudHMuZGV2JA';
 const CLERK_JS='5'; /* major version of Clerk's browser script */
 const ENGINE_URL='/api/engine'; /* Netlify Function that serves the scoring code to signed-in accounts only */
 const AUTH52={state:'loading',pending:null,lastTap:0,wasIn:false,engine:'none'};
